@@ -168,13 +168,13 @@ export default function Home() {
 								serving
 							</span>
 							<div className="flex items-center gap-2">
-								<span className="bg-gradient-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent font-bold text-base md:text-lg">
+								<span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent font-bold text-base md:text-lg">
 									{formatNumber(animatedUsers)}
 								</span>
 								<span className="text-white/50 text-xs">users</span>
               </div>
               <div className="flex items-center gap-2">
-								<span className="bg-gradient-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent font-bold text-base md:text-lg">
+								<span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent font-bold text-base md:text-lg">
 									{formatNumber(animatedGuilds)}
 								</span>
 								<span className="text-white/50 text-xs">guilds</span>

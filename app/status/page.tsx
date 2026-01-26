@@ -7,23 +7,7 @@ import { FaCircle } from "react-icons/fa";
 import { SiInstatus } from "react-icons/si";
 import { HiServerStack } from "react-icons/hi2";
 import Loader from "@/components/Loader";
-
-interface Shard {
-  id: number;
-  guilds: number;
-  users: number;
-  ping: number;
-  status: string;
-}
-
-interface BotStatus {
-  shards: Shard[];
-  total_guilds: number;
-  total_users: number;
-  total_shards: number;
-  avg_ping: number;
-  uptime: number;
-}
+import type { Status } from "@/types/status";
 
 function useCountUp(end: number, duration: number = 2000): number {
   const [count, setCount] = useState(0);
@@ -76,7 +60,6 @@ function useCountUp(end: number, duration: number = 2000): number {
 }
 
 function formatUptime(milliseconds: number): string {
-  // Convert milliseconds to seconds
   const seconds = Math.floor(milliseconds / 1000);
   const days = Math.floor(seconds / 86400);
   const hours = Math.floor((seconds % 86400) / 3600);
@@ -102,12 +85,11 @@ function formatNumber(num: number): string {
 }
 
 export default function StatusPage() {
-  const [status, setStatus] = useState<BotStatus | null>(null);
+  const [status, setStatus] = useState<Status | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const animatedUsers = useCountUp(status?.total_users || 0, 2000);
-  const animatedGuilds = useCountUp(status?.total_guilds || 0, 2000);
-  const animatedPing = useCountUp(Math.round(status?.avg_ping || 0), 1500);
+  const animatedUsers = useCountUp(status?.totalUsers || 0, 2000);
+  const animatedGuilds = useCountUp(status?.totalGuilds || 0, 2000);
+  const animatedPing = useCountUp(Math.round(status?.avgPing || 0), 1500);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -158,17 +140,15 @@ export default function StatusPage() {
       <MeshGradient />
       <main className="flex min-h-screen w-full flex-col items-center py-24 px-8 relative z-10">
         <div className="w-full max-w-5xl">
-          {/* Header */}
           <div className="mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
               <SiInstatus className="w-8 h-8 text-white/80" />
-              <span className="bg-gradient-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
                 Status
               </span>
             </h1>
           </div>
 
-          {/* Overall Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl animate-fade-in-up hover:bg-white/10 transition-all" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
@@ -211,7 +191,6 @@ export default function StatusPage() {
             </div>
           </div>
 
-          {/* Shards */}
           <div className="animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
               <h2 className="text-2xl font-bold text-white">Shards</h2>
@@ -224,7 +203,6 @@ export default function StatusPage() {
                   className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-5 shadow-2xl animate-fade-in-up hover:bg-white/10 hover:border-white/20 transition-all group"
                   style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                 >
-                  {/* Shard Header */}
                   <div className="flex items-center gap-2 mb-4">
                     <FaCircle className={`w-2 h-2 ${
                       shard.status === 'connected' ? 'text-green-400' : 'text-red-400'
@@ -232,7 +210,6 @@ export default function StatusPage() {
                     <span className="text-white font-semibold">Shard {shard.id}</span>
                   </div>
                   
-                  {/* Metrics Grid */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="text-center">
                       <HiServerStack className="w-5 h-5 text-white/50 mx-auto mb-1" />

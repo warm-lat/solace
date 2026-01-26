@@ -152,7 +152,7 @@ export default function CommandsPage() {
 					>
 						<h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
 							<HiCommandLine className="w-8 h-8 text-white/80" />
-							<span className="bg-gradient-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
+							<span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
 								Commands
 							</span>
 						</h1>
@@ -161,7 +161,7 @@ export default function CommandsPage() {
 					<div className="flex flex-col lg:flex-row gap-6">
 						{/* Sidebar - Categories */}
 						<aside
-							className="w-full lg:w-64 flex-shrink-0 animate-fade-in-up"
+							className="w-full lg:w-64 shrink-0 animate-fade-in-up"
 							style={{ animationDelay: "0.2s" }}
 						>
 							<div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 sticky top-24">
@@ -181,7 +181,7 @@ export default function CommandsPage() {
 														: "backdrop-blur-md bg-white/5 text-white/70 border border-white/10 hover:bg-white/10 hover:text-white"
 												}`}
 											>
-												<IconComponent className="w-5 h-5 flex-shrink-0" />
+												<IconComponent className="w-5 h-5 shrink-0" />
 												<span className="flex-1 text-left">{category}</span>
 												<span className="text-white/50 text-xs">
 													{categoryCounts[category]}
@@ -269,7 +269,7 @@ export default function CommandsPage() {
 											<div
 												className={`overflow-hidden transition-all duration-500 ease-in-out ${
 													isExpanded
-														? "max-h-[2000px] opacity-100"
+														? "max-h-500 opacity-100"
 														: "max-h-0 opacity-0"
 												}`}
 											>
@@ -303,11 +303,6 @@ export default function CommandsPage() {
 																					</span>
 																				)}
 																			</div>
-																			{param.description && (
-																				<p className="text-white/60 text-sm mt-1">
-																					{param.description}
-																				</p>
-																			)}
 																		</div>
 																	))}
 																</div>

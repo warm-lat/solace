@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
-import { MeshGradient } from "@/components/background/GradientMesh";
+import { MeshGradient } from "@/components/bg/GradientMesh";
 import Loader from "@/components/Loader";
 
 export default function InvitePage() {

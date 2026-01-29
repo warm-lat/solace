@@ -1,6 +1,6 @@
 'use client';
 
-import { MeshGradient } from "@/components/background/GradientMesh";
+import { MeshGradient } from "@/components/bg/GradientMesh";
 import Link from "next/link";
 import { HiHome } from "react-icons/hi2";
 

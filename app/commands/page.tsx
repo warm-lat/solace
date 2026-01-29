@@ -1,6 +1,6 @@
 "use client";
 
-import { MeshGradient } from "@/components/background/GradientMesh";
+import { MeshGradient } from "@/components/bg/GradientMesh";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import {
@@ -238,7 +238,7 @@ export default function CommandsPage() {
 												<div className="flex-1">
 													<div className="flex items-center gap-3 mb-2">
 														<span className="text-white font-semibold text-lg">
-															/{command.name}
+															,{command.name}
 														</span>
 														<button
 															onClick={(e) => {

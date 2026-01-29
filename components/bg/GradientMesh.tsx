@@ -1,5 +1,5 @@
 "use client"
-import { Gradient } from "@/components/background/gradient"
+import { Gradient } from "@/components/bg/gradient"
 import { useEffect } from "react"
 
 export const MeshGradient = () => {

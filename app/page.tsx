@@ -1,28 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { MeshGradient } from "@/components/background/GradientMesh";
+import { MeshGradient } from "@/components/bg/GradientMesh";
 import { useEffect, useState, useRef } from "react";
 import { FaDiscord } from "react-icons/fa";
 import { HiCommandLine } from "react-icons/hi2";
-import { SiStatuspage } from "react-icons/si";
-
-interface Shard {
-	id: number;
-	guilds: number;
-	users: number;
-	ping: number;
-	status: string;
-}
-
-interface BotStatus {
-	shards: Shard[];
-	total_guilds: number;
-	total_users: number;
-	total_shards: number;
-	avg_ping: number;
-	uptime: number;
-}
+import type { Status } from "@/types/status";
 
 function useCountUp(end: number, duration: number = 2000): number {
 	const [count, setCount] = useState(0);
@@ -77,7 +60,7 @@ function useCountUp(end: number, duration: number = 2000): number {
 }
 
 export default function Home() {
-	const [status, setStatus] = useState<BotStatus | null>(null);
+	const [status, setStatus] = useState<Status | null>(null);
 	const [loading, setLoading] = useState(true);
 
 	const animatedUsers = useCountUp(status?.total_users || 0, 2000);
@@ -138,7 +121,7 @@ export default function Home() {
 						className="text-4xl md:text-5xl font-bold text-center -mt-1 animate-fade-in-up"
 						style={{ animationDelay: "0.2s" }}
 					>
-						<span className="bg-gradient-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
+						<span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent">
 							warm
 						</span>
 					</h1>
@@ -172,8 +155,11 @@ export default function Home() {
 									{formatNumber(animatedUsers)}
 								</span>
 								<span className="text-white/50 text-xs">users</span>
-              </div>
-              <div className="flex items-center gap-2">
+							</div>
+							<span className="text-white/60 text-sm md:text-base">
+								&
+							</span>
+							<div className="flex items-center gap-2">
 								<span className="bg-linear-to-r from-[#e9d8b6] via-[#f3e4c5] to-[#ad976b] bg-clip-text text-transparent font-bold text-base md:text-lg">
 									{formatNumber(animatedGuilds)}
 								</span>
@@ -196,7 +182,7 @@ export default function Home() {
 					>
 						<a
 							href="/invite"
-							className="flex items-center justify-center gap-2 bg-[var(--main)] text-black px-6 py-2.5 rounded-lg font-medium hover:opacity-90 transition-all text-sm hover:scale-105"
+							className="flex items-center justify-center gap-2 bg-(--main) text-black px-6 py-2.5 rounded-lg font-medium hover:opacity-90 transition-all text-sm hover:scale-105"
 						>
 							<FaDiscord className="w-4 h-4" />
 							Add to Discord

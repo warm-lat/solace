@@ -1,6 +1,6 @@
 'use client';
 
-import { MeshGradient } from "@/components/background/GradientMesh";
+import { MeshGradient } from "@/components/bg/GradientMesh";
 import { useEffect, useState, useRef } from "react";
 import { HiUsers, HiSignal, HiClock } from "react-icons/hi2";
 import { FaCircle } from "react-icons/fa";
@@ -87,9 +87,9 @@ function formatNumber(num: number): string {
 export default function StatusPage() {
   const [status, setStatus] = useState<Status | null>(null);
   const [loading, setLoading] = useState(true);
-  const animatedUsers = useCountUp(status?.totalUsers || 0, 2000);
-  const animatedGuilds = useCountUp(status?.totalGuilds || 0, 2000);
-  const animatedPing = useCountUp(Math.round(status?.avgPing || 0), 1500);
+  const animatedUsers = useCountUp(status?.total_users || 0, 2000);
+  const animatedGuilds = useCountUp(status?.total_guilds || 0, 2000);
+  const animatedPing = useCountUp(Math.round(status?.avg_ping || 0), 1500);
 
   useEffect(() => {
     const fetchStatus = async () => {

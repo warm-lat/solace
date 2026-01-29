@@ -1,9 +1,9 @@
 export interface Status {
     shards: Shards[];
-    totalGuilds: number;
-    totalUsers: number;
-    totalShards: number;
-    avgPing: number;
+    total_guilds: number;
+    total_users: number;
+    total_shards: number;
+    avg_ping: number;
     uptime: number;
 }
 

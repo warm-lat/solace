@@ -54,7 +54,7 @@ export default function Navbar() {
 
         <Link
           href="/discord"
-          className="flex items-center gap-2 bg-[var(--main)] text-black px-4 py-2 rounded-full font-medium text-sm hover:opacity-90 transition-all hover:scale-105"
+          className="flex items-center gap-2 bg-(--main) text-black px-4 py-2 rounded-full font-medium text-sm hover:opacity-90 transition-all hover:scale-105"
         >
           <FaDiscord className="w-4 h-4" />
           <span className="hidden sm:inline">Discord</span>

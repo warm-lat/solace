@@ -3,8 +3,8 @@ import type { Status } from "@/types/status";
 
 export async function GET() {
 	try {
-		const response = await fetch("https://api.warm.lat/bot/status", {
-			next: { revalidate: 60 },
+		const response = await fetch("https://reveal.warm.lat/bot/status", {
+			next: { revalidate: 120 },
 		});
 
 		if (!response.ok) {

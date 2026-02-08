@@ -3,8 +3,8 @@ import type { Commands } from "@/types/commands";
 
 export async function GET() {
 	try {
-		const response = await fetch("https://api.warm.lat/bot/commands", {
-			next: { revalidate: 60 }, // Revalidate every 60 seconds
+		const response = await fetch("https://reveal.warm.lat/bot/commands", {
+			next: { revalidate: 120 }, // Revalidate every 120 seconds
 		});
 
 		if (!response.ok) {
